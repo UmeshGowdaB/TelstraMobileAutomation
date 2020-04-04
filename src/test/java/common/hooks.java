@@ -9,14 +9,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class hooks {
+public class hooks extends baseDriver {
     private static final String APP = "apk/Amazon_shopping.apk";
-    private static final String APPIUM = "http://localhost:4723/wd/hub";
-    private AndroidDriver driver;
+//    private static final String APPIUM = "http://localhost:4723/wd/hub";
+     private AndroidDriver driver;
+
     private ExpectedConditions ExceptedConditions;
 
     @Before
@@ -27,8 +27,9 @@ public class hooks {
         desiredCapabilities.setCapability("deviceName", "appium");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
         desiredCapabilities.setCapability("app", APP);
+        driver = baseDriver(desiredCapabilities);
 
-        driver = new AndroidDriver( new URL(APPIUM), desiredCapabilities);
+//        driver = new AndroidDriver( new URL(APPIUM), desiredCapabilities);
     }
 
     @After
@@ -38,14 +39,9 @@ public class hooks {
         }
     }
 
-
-    @Test
-    public  void login() {
-
-        WebDriverWait wait = new WebDriverWait( driver, 10);
-        wait.until(ExceptedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("Login ")));
-
-
-
-    }
+//    @Test
+//    public  void login() {
+//        WebDriverWait wait = new WebDriverWait( driver, 10);
+//        wait.until(ExceptedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("Login ")));
+//    }
 }
