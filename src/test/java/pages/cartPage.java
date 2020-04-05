@@ -12,10 +12,12 @@ public class cartPage {
     private ExpectedConditions ExceptedConditions;
     baseDriver driver = new baseDriver();
 
+    /***** Page Objects *****/
     private By cartButton = MobileBy.AccessibilityId("id/chrome_action_bar_cart");
     private By cartItem = MobileBy.AccessibilityId("id/chrome_checkout_item");
     private By proceedCheckOut = MobileBy.partialLinkText("Proceed tp Checkout");
 
+    /**** Page Methods ****/
     public void validateCart(String itemText) {
         driver.androidDriver().findElement(cartButton).click();
         WebElement itemName = driver.waitfor(cartItem);

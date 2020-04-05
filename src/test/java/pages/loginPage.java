@@ -12,6 +12,7 @@ public class loginPage extends baseDriver {
     private ExpectedConditions ExceptedConditions;
     baseDriver driver = new baseDriver();
 
+    /***** Page Objects *****/
     private By signIn = MobileBy.AccessibilityId("siginSubmit");
     private By email = MobileBy.AccessibilityId("ap_email_login");
     private By continueButton = MobileBy.AccessibilityId("continue");
@@ -19,6 +20,7 @@ public class loginPage extends baseDriver {
     private By burgerMenu = MobileBy.AccessibilityId("id/chrome_action_bar_burger_icon");
     private By greetingText = MobileBy.AccessibilityId("id/gno_greeting_text_view");
 
+    /**** Page Methods ****/
     public void enterLoginDetails() {
         WebElement userid = driver.waitfor(signIn);
         userid.click();

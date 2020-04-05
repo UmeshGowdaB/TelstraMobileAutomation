@@ -11,12 +11,14 @@ public class checkOutPage {
     private ExpectedConditions ExceptedConditions;
     baseDriver driver = new baseDriver();
 
+    /***** Page Objects *****/
     private By addressButton = MobileBy.AccessibilityId("a-autoid-0");
     private By freeDeliveryOption = MobileBy.AccessibilityId("order_0_ShippingSpeed_std-0");
     private By continueButton = MobileBy.partialLinkText("Continue");
     private By paymentSelection = MobileBy.AccessibilityId("pp-mo9SpE-53");
     private By placeYourOrderButton = MobileBy.partialLinkText("Place your order");
 
+    /**** Page Methods ****/
     public void selectAddress() {
         WebElement address = driver.waitfor(addressButton);
         address.click();

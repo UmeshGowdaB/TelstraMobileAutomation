@@ -15,11 +15,13 @@ public class searchPage {
     baseDriver driver = new baseDriver();
     appHelper helper = new appHelper();
 
+    /***** Page Objects *****/
     private By searchBox = MobileBy.AccessibilityId("id/rs_search_src_text");
     private By itemName = MobileBy.partialLinkText("SAMSUNG 65");
     private By addTocartButton = MobileBy.AccessibilityId("add-to-cart-button");
     private By title = MobileBy.AccessibilityId("title_feature_div");
 
+    /**** Page Methods ****/
     public void searchItem(String itemName) {
         WebElement searchField = driver.waitfor(searchBox);
         searchField.sendKeys(itemName);

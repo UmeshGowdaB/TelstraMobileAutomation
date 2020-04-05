@@ -3,11 +3,11 @@ package helpers;
 import org.openqa.selenium.interactions.Interaction;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
-
 import java.time.Duration;
 
 public class appHelper {
 
+    /**** Methods for all functionality of apps ****/
     public Sequence scrollDown() {
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");

@@ -28,7 +28,7 @@ How to run tests
 -----
 We use gradle tasks to run tests. When running tests we need to pass environment variables as parameters.
 
-`./gradlew clean runTests -Denv="site_acceptance" -Duse_pdt="true" -Dcucumber.options="--tags @test" --info`
+`./gradlew clean runTests`
 
 Options:
 
