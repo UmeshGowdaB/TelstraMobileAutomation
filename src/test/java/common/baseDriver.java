@@ -2,6 +2,7 @@ package common;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,9 +26,9 @@ public class baseDriver {
         return driver;
     }
 
-    public WebElement waitfor(String element) {
+    public WebElement waitfor(By element) {
         WebDriverWait wait = new WebDriverWait( driver, 10);
-        WebElement name = wait.until(ExceptedConditions.presenceOfElementLocated(MobileBy.AccessibilityId(element)));
+        WebElement name = wait.until(ExceptedConditions.presenceOfElementLocated((element)));
         return name;
     }
 }

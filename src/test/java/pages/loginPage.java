@@ -2,6 +2,7 @@ package pages;
 
 import common.baseDriver;
 import io.appium.java_client.MobileBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -10,24 +11,27 @@ public class loginPage extends baseDriver {
     private ExpectedConditions ExceptedConditions;
     baseDriver driver = new baseDriver();
 
-    private String username = "";
-    private String password = "";
-    private String loginButton = "";
-    private String burgerMenu = "";
+    private By signIn = MobileBy.AccessibilityId("siginSubmit");
+    private By email = MobileBy.AccessibilityId("ap_email_login");
+    private By continueButton = MobileBy.AccessibilityId("continue");
+    private By password = MobileBy.AccessibilityId("ap_password");
+    private By burgerMenu = MobileBy.AccessibilityId("id/chrome_action_bar_burger_icon");
+    private By greetingText = MobileBy.AccessibilityId("id/gno_greeting_text_view");
 
     public void enterLoginDetails() {
-
-        WebElement userid = driver.waitfor(username);
+        WebElement userid = driver.waitfor(signIn);
         userid.click();
-        userid.sendKeys("test@gmail.com");
-        driver.androidDriver().findElement(MobileBy.cssSelector(password)).sendKeys("password");
-        driver.androidDriver().findElement(MobileBy.AccessibilityId(loginButton)).click();
+        driver.androidDriver().findElement(email).sendKeys("test@gmail.com");
+        driver.androidDriver().findElement(continueButton).click();
+        driver.androidDriver().findElement(password).sendKeys("password");
+        driver.androidDriver().findElement(signIn).click();
     }
 
     public void checkUserLogin() {
-
-        WebElement loggedIn = driver.waitfor(burgerMenu);
-        if (!loggedIn.getAttribute("text").contains("test"))
+        WebElement menu = driver.waitfor(burgerMenu);
+        menu.click();
+        WebElement homeElement = driver.waitfor(greetingText);
+        if (!homeElement.getAttribute("text").contains("test"))
         {
             new Exception("User is not Logged in");
         }
