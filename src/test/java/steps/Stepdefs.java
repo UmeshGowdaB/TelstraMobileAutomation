@@ -17,27 +17,26 @@ public class MyStepdefs extends hooks {
 
     Given("^I login into amazon app$")
     public void iLoginIntoAmazonApp() {
-
         login.enterLoginDetails();
         login.checkUserLogin();
     }
 
     When("^I search for (.*)$")
     public void iSearchForItem(String itemName) {
-
         search.searchItem(itemName);
         search.validateSearchResults();
         search.selectItem();
+        search.addToCart();
     }
 
-    And("I Add the item to cart")
-    public void iAddTheItemToCart() {
-        cart.validateCart();
+    And("I Add the (.*) to cart")
+    public void iAddTheItemToCart(String itemName) {
+        cart.validateCart(itemName);
         cart.proceedCheckout();
     }
 
-    Then("I can checkout the item selected")
-    public void iCanCheckoutTheItemSelected() {
+    Then("I can checkout the (.*) selected")
+    public void iCanCheckoutTheItemSelected(String itemName) {
         checkOut.selectAddress();
         checkOut.selectDelivery();
         checkOut.selectPayment();

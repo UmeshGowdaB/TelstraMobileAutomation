@@ -1,19 +1,13 @@
 package pages;
 
 import common.baseDriver;
+import helpers.appHelper;
 import io.appium.java_client.MobileBy;
-import jdk.internal.vm.compiler.word.Pointer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Interaction;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.lang.reflect.Array;
-import java.time.Duration;
 import java.util.Arrays;
-import helpers.appHelper;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class searchPage {
 
@@ -22,23 +16,27 @@ public class searchPage {
     appHelper helper = new appHelper();
 
     private By searchBox = MobileBy.AccessibilityId("id/rs_search_src_text");
-
+    private By itemName = MobileBy.partialLinkText("SAMSUNG 65");
+    private By addTocartButton = MobileBy.AccessibilityId("add-to-cart-button");
+    private By title = MobileBy.AccessibilityId("title_feature_div");
 
     public void searchItem(String itemName) {
         WebElement searchField = driver.waitfor(searchBox);
         searchField.sendKeys(itemName);
     }
 
-    public void validateSearchResults() {
-
-
+    public void validateSearchResults(String item) {
+        assertThat(driver.androidDriver().findElement(itemName).getAttribute("text")).contains(item);
     }
 
     public void selectItem() {
-
         driver.androidDriver().perform(Arrays.asList(helper.scrollDown()));
-        driver.androidDriver()
-
+        driver.androidDriver().findElement(itemName).click();
     }
 
+    public void addToCart(String itemText) {
+        WebElement itemName = driver.waitfor(title);
+        assertThat(itemName.getAttribute("text")).contains(itemText);
+        driver.androidDriver().findElement(addTocartButton).click();
+    }
 }

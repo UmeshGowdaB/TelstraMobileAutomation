@@ -5,6 +5,7 @@ import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class loginPage extends baseDriver {
 
@@ -31,9 +32,6 @@ public class loginPage extends baseDriver {
         WebElement menu = driver.waitfor(burgerMenu);
         menu.click();
         WebElement homeElement = driver.waitfor(greetingText);
-        if (!homeElement.getAttribute("text").contains("test"))
-        {
-            new Exception("User is not Logged in");
-        }
+        assertThat(homeElement.getAttribute("text")).contains("test");
     }
 }
